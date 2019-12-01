@@ -1,0 +1,78 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Description: >-
+  A simple backend (read/write to DynamoDB) with a RESTful API endpoint using Amazon API Gateway.
+Parameters: 
+  CollectionIdParameter: 
+    Type: String
+Resources:
+  BadassDDBTable:
+    Properties:
+      AttributeDefinitions:
+      - AttributeName: Username
+        AttributeType: S
+      KeySchema:
+      - AttributeName: Username
+        KeyType: HASH
+      # ProvisionedThroughput:
+      #   ReadCapacityUnits: '3'
+      #   WriteCapacityUnits: '3'
+    Type: AWS::DynamoDB::Table
+  BadassGateFunction:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: gate.handler
+      Runtime: nodejs12.x
+      Environment:
+        Variables:
+          DYNAMODB_TABLE:
+            Ref: BadassDDBTable
+          REKOGNITION_COLLECTION:
+            Ref: CollectionIdParameter
+      CodeUri: .
+      Description: >-
+        A sample backend for the smart gates that performs face recognition and fetches name from DynamoDB
+      MemorySize: 512
+      Timeout: 10
+      Policies:
+        # - DynamoDBCrudPolicy:
+        - DynamoDBReadPolicy:
+            TableName: 
+              Ref: BadassDDBTable
+        - RekognitionReadPolicy:
+            collectionId: !Ref BadassDDBTable
+      Events:
+        Api1:
+          Type: Api
+          Properties:
+            Path: /gate
+            Method: POST
+  BadassAdminFunction:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: admin.handler
+      Runtime: nodejs12.x
+      Environment:
+        Variables:
+          DYNAMODB_TABLE:
+            Ref: BadassDDBTable
+          REKOGNITION_COLLECTION:
+            Ref: CollectionIdParameter
+      CodeUri: .
+      Description: >-
+        A sample backend for the Face rekognition administrator
+      MemorySize: 512
+      Timeout: 10
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref BadassDDBTable
+        - RekognitionReadPolicy:
+            collectionId: !Ref BadassDDBTable       
+        - RekognitionWriteOnlyAccessPolicy:
+            collectionId: !Ref BadassDDBTable
+      Events:
+        Api2:
+          Type: Api
+          Properties:
+            Path: /admin
+            Method: POST
