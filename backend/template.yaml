@@ -40,7 +40,7 @@ Resources:
             TableName: 
               Ref: BadassDDBTable
         - RekognitionReadPolicy:
-            collectionId: !Ref BadassDDBTable
+            CollectionId: !Ref BadassDDBTable
       Events:
         Api1:
           Type: Api
@@ -67,9 +67,9 @@ Resources:
         - DynamoDBCrudPolicy:
             TableName: !Ref BadassDDBTable
         - RekognitionReadPolicy:
-            collectionId: !Ref BadassDDBTable       
+            CollectionId: !Ref BadassDDBTable       
         - RekognitionWriteOnlyAccessPolicy:
-            collectionId: !Ref BadassDDBTable
+            CollectionId: !Ref BadassDDBTable
       Events:
         Api2:
           Type: Api
