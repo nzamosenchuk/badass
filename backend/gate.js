@@ -20,8 +20,7 @@ exports.handler = async (event) => {
             Image: {
                  Bytes: arrByte
             },
-            CollectionId: collectionID,
-            MaxFaces: 5,
+            CollectionId: collectionID
         };
     var name = "Warning! Unauthorized person!"    
     
