@@ -9,3 +9,4 @@ region = "eu-central-1"
 confirm_changeset = true
 capabilities = "CAPABILITY_IAM"
 parameter_overrides = "CollectionIdParameter=badass-faces"
+
