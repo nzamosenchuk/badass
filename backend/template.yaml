@@ -47,6 +47,7 @@ Resources:
         Api1:
           Type: Api
           Properties:
+            Cors: "*"
             Path: /gate
             Method: POST
   BadassAdminFunction:
@@ -78,5 +79,6 @@ Resources:
         Api2:
           Type: Api
           Properties:
+            Cors: "*"
             Path: /admin
             Method: POST
