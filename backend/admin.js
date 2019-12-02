@@ -30,7 +30,7 @@ exports.handler = async (event) => {
     //console.log("Reading input from event:\n", util.inspect(event, {depth: 5}));
     var params = {
         Image: {Bytes: arrByte},
-        CollectionId: collectionID
+        //CollectionId: collectionID
     };
     return rekognition.detectFaces(params).promise().then((data)=> {
         console.log("Detection result from rekognition:\n", util.inspect(data, {depth: 5}));
