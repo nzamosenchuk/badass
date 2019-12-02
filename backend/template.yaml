@@ -41,6 +41,8 @@ Resources:
               Ref: BadassDDBTable
         - RekognitionReadPolicy:
             CollectionId: !Ref CollectionIdParameter
+        - RekognitionFacesPolicy:
+            CollectionId: !Ref CollectionIdParameter
       Events:
         Api1:
           Type: Api
@@ -69,6 +71,8 @@ Resources:
         - RekognitionReadPolicy:
             CollectionId: !Ref CollectionIdParameter       
         - RekognitionWriteOnlyAccessPolicy:
+            CollectionId: !Ref CollectionIdParameter
+        - RekognitionFacesPolicy:
             CollectionId: !Ref CollectionIdParameter
       Events:
         Api2:
