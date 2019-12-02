@@ -37,7 +37,7 @@ exports.handler = async (event) => {
         if (data.FaceDetails.length != 1) {
             throw new Error("Detected " + data.FaceDetails.length + " faces in the photo.");
         }
-        if (data.FaceDetails[0].Sunglasses.Value === true){
+        if (data.FaceDetails[0].Sunglasses && data.FaceDetails[0].Sunglasses.Value === true){
             throw new Error("Face is wearing sunglasses");
         }
         var detectedFaceDetails = data.FaceDetails[0];
