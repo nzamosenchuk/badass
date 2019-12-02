@@ -12,13 +12,15 @@ const docClient = new AWS.DynamoDB.DocumentClient({
 
 //, context, callback
 exports.handler = async (event) => {
-    const response = (err, res) => callback(null, {
-        statusCode: err ? '400' : '200',
-        body: err ? err.message : JSON.stringify(res),
-        headers: {
-            'Content-Type': 'application/json',
-        },
-    });
+    const response = (err, res) => { 
+        return {
+            statusCode: err ? '400' : '200',
+            body: err ? err.message : JSON.stringify(res),
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        }   
+    };
 
     var body = JSON.parse(event.body);
     let buff = Buffer.from(body.img, 'base64')//.toString('ascii')
