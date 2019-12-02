@@ -14,9 +14,9 @@ Resources:
       KeySchema:
       - AttributeName: Username
         KeyType: HASH
-      # ProvisionedThroughput:
-      #   ReadCapacityUnits: '3'
-      #   WriteCapacityUnits: '3'
+      ProvisionedThroughput:
+        ReadCapacityUnits: '2'
+        WriteCapacityUnits: '2'
     Type: AWS::DynamoDB::Table
   BadassGateFunction:
     Type: 'AWS::Serverless::Function'
