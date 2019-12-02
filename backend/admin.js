@@ -15,7 +15,7 @@ exports.handler = async (event) => {
     const response = (err, res) => { 
         return {
             statusCode: err ? '400' : '200',
-            body: err ? err.message : JSON.stringify(res),
+            body: err ? JSON.stringify(err.message) : JSON.stringify(res),
             headers: {
                 'Content-Type': 'application/json',
             }
