@@ -1,6 +1,6 @@
 <template>
 	<Page class="page">
-		<ActionBar title="Camera" class="action-bar" />
+		<ActionBar title="GATE" class="action-bar" />
         <StackLayout>
             <Button :text="textPicture" class="btn btn-primary" marginTop="20" @tap="takePicture"></Button>
             <Label :text="nameResult" class="h1" textWrap="true" ></Label>
@@ -20,7 +20,7 @@ import { TNSTextToSpeech, SpeakOptions } from 'nativescript-texttospeech';
 let tts = new TNSTextToSpeech();
 
 const format = enumsModule.ImageFormat.jpeg
-const url = "https://ff38yp01r0.execute-api.eu-central-1.amazonaws.com/Prod/gate/";
+const url = "https://XXXXXXXXXXX.execute-api.eu-central-1.amazonaws.com/Prod/gate/";
 
 export default {
     data() {
