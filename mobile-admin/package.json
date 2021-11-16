@@ -16,7 +16,7 @@
         "@nativescript/core": "6.2.1",
         "@nativescript/theme": "2.2.0",
         "@progress-nativechat/nativescript-nativechat": "2.0.4",
-        "aws-sdk": "^2.580.0",
+        "aws-sdk": "^2.814.0",
         "base-64": "^0.1.0",
         "child_process": "^1.0.2",
         "dgram": "^1.0.1",
